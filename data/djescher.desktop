@@ -1,0 +1,9 @@
+[Desktop Entry]
+Type=Application
+Version=1.0
+Name=DJ Escher
+Exec=djescher
+Comment=DJ Escher
+Icon=djescher
+Terminal=false
+Categories=Game;ArcadeGame;
