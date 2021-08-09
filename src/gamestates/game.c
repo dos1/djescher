@@ -173,10 +173,10 @@ void Gamestate_Draw(struct Game* game, struct GamestateResources* data) {
                                       data->tables[i+4].on ? data->tables[i+4].rot : 0, 0);
     }
 
-    al_identity_transform(&t);
+    al_copy_transform(&t, &ot);
     if (data->reverse) {
     al_scale_transform(&t, -1, 1);
-    al_translate_transform(&t, 1920, 0);
+    al_translate_transform(&t, game->clip_rect.w, 0);
     }
     al_use_transform(&t);
     al_draw_scaled_rotated_bitmap(data->escher, al_get_bitmap_width(data->escher) / 2, al_get_bitmap_height(data->escher), 20 + sin(data->popout) * 200 - 200, 420, 0.5, 0.5, 0.2 + 0.15 * sin(data->popout), 0);
