@@ -219,8 +219,10 @@ void Gamestate_ProcessEvent(struct Game* game, struct GamestateResources* data, 
     if (ev->type == ALLEGRO_EVENT_MOUSE_AXES) {
         data->pos = Clamp(0, 1, (ev->mouse.x - game->clip_rect.x) / (double)game->clip_rect.w);
     }
+    if (ev->type == ALLEGRO_EVENT_TOUCH_MOVE) {
+        data->pos = Clamp(0, 1, data->pos + ev->touch.dx * 1.5 / (double)game->clip_rect.w);
+    }
 
-    if (ev->type == ALLEGRO_EVENT_MOUSE_BUTTON_DOWN) data->counter = 0;
 }
 
 void* Gamestate_Load(struct Game* game, void (*progress)(struct Game*)) {
